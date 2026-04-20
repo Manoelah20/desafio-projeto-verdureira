@@ -164,40 +164,44 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
   styles: [`
     .container {
       max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: 40px auto;
+      padding: 0 30px;
     }
 
     .intro-card {
-      margin-bottom: 30px;
-      border-radius: 12px;
+      margin-bottom: 40px;
+      border-radius: 16px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .note {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 25px;
       font-weight: 500;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     .exercises-nav {
       display: flex;
-      gap: 15px;
-      margin-bottom: 30px;
+      gap: 20px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
 
     .exercises-nav button {
       flex: 1;
-      min-width: 200px;
-      border-radius: 8px;
+      min-width: 220px;
+      border-radius: 12px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       transition: all 0.3s ease;
+      padding: 12px 24px;
+      font-size: 15px;
     }
 
     .exercises-nav button:hover {
@@ -206,8 +210,8 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
     }
 
     .exercise-card {
-      margin-bottom: 30px;
-      border-radius: 12px;
+      margin-bottom: 40px;
+      border-radius: 16px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.3s ease;
     }
@@ -217,37 +221,40 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
     }
 
     .code-toggle {
-      margin-bottom: 20px;
-      border-radius: 8px;
+      margin-bottom: 25px;
+      border-radius: 12px;
       font-weight: 600;
+      padding: 10px 20px;
+      font-size: 15px;
     }
 
     .code-section {
       background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      padding: 25px;
-      border-radius: 12px;
-      margin-top: 20px;
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 25px;
       border-left: 4px solid #667eea;
     }
 
     .code-section h4 {
       margin-top: 0;
       color: #667eea;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
+      margin-bottom: 20px;
     }
 
     .file-list {
       list-style: none;
       padding: 0;
-      margin: 15px 0;
+      margin: 20px 0;
     }
 
     .file-list li {
-      margin: 12px 0;
-      padding: 10px;
+      margin: 15px 0;
+      padding: 15px;
       background: white;
-      border-radius: 6px;
+      border-radius: 10px;
       transition: all 0.2s ease;
     }
 
@@ -262,11 +269,13 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
       font-weight: 500;
       display: flex;
       align-items: center;
+      font-size: 15px;
     }
 
     .file-list a::before {
       content: '📄';
-      margin-right: 10px;
+      margin-right: 12px;
+      font-size: 18px;
     }
 
     .file-list a:hover {
@@ -274,28 +283,34 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
     }
 
     .demo-section {
-      margin-top: 20px;
-      padding: 20px;
+      margin-top: 25px;
+      padding: 30px;
       background: white;
-      border-radius: 8px;
+      border-radius: 12px;
       border: 1px solid #e0e0e0;
     }
 
     ::ng-deep mat-card-header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      border-radius: 12px 12px 0 0;
+      border-radius: 16px 16px 0 0;
+      padding: 25px 30px;
     }
 
     ::ng-deep mat-card-title {
       color: white;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 600;
     }
 
     ::ng-deep mat-card-subtitle {
       color: rgba(255, 255, 255, 0.9);
-      font-size: 14px;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    ::ng-deep mat-card-content {
+      padding: 30px;
     }
   `]
 })
