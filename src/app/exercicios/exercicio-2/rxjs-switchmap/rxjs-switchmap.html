@@ -1,0 +1,10 @@
+<div class="rxjs-container">
+    <div class="result-card">
+        <p class="label">Informações da Pessoa (via switchMap):</p>
+        <h2 *ngIf="texto; else loading">{{ texto }}</h2>
+    </div>
+
+    <ng-template #loading>
+        <p>Buscando dados da família...</p>
+    </ng-template>
+</div>

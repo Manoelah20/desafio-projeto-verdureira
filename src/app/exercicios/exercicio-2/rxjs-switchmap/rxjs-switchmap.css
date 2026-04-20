@@ -1,0 +1,43 @@
+/* Estilo para o container de cada exercício */
+:host {
+    display: block;
+    padding: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-top: 10px;
+}
+
+h1,
+h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.loading {
+    color: #3182ce;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 8px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+li:last-child {
+    border-bottom: none;
+}

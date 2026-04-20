@@ -1,0 +1,33 @@
+<section class="container">
+    <h2>Exercício 1 - Respostas</h2>
+
+    <div class="card card-refatoracao">
+        <h3>1.1 - Refatoração Verdureira</h3>
+        <p><strong>Descrição do Produto 1:</strong> {{ resumoProduto }}</p>
+        <p>
+            <strong>Laranja tem estoque?</strong> {{ temEstoque ? 'Sim' : 'Não'
+            }}
+        </p>
+    </div>
+
+    <div class="card card-paginacao">
+        <h3>1.2 - Generics e Paginação</h3>
+        <p>
+            <strong>Total encontrado:</strong> {{ resultadoPaginacao?.total }}
+        </p>
+
+        <p><strong>Itens na página:</strong></p>
+
+        <ul *ngIf="resultadoPaginacao?.itens?.length; else listaVazia">
+            <li *ngFor="let item of resultadoPaginacao.itens">
+                {{ item.nome }}
+            </li>
+        </ul>
+
+        <ng-template #listaVazia>
+            <p class="status-vazio">
+                Nenhum item encontrado para o filtro aplicado.
+            </p>
+        </ng-template>
+    </div>
+</section>

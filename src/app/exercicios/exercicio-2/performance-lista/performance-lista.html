@@ -1,0 +1,23 @@
+<div class="performance-container">
+    <div class="filter-bar">
+        <input
+            type="text"
+            placeholder="Filtrar lista por nome..."
+            (input)="onFilter($event)"
+        />
+        <small>Total de itens: {{ itensFiltrados.length }}</small>
+    </div>
+
+    <ul class="lista-itens">
+        <li *ngFor="let item of itensFiltrados; trackBy: trackById">
+            <div class="card">
+                <h3>{{ item.nome }}</h3>
+                <p>{{ item.descricao }}</p>
+            </div>
+        </li>
+    </ul>
+
+    <div *ngIf="itensFiltrados.length === 0" class="empty-state">
+        <p>Nenhum item corresponde ao filtro.</p>
+    </div>
+</div>

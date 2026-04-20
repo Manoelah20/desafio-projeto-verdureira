@@ -1,0 +1,35 @@
+<div class="container-exercicio">
+    <header>
+        <h1>Exercício 3: Signals & NgRx</h1>
+    </header>
+
+    <div class="grid">
+        <section class="card-puro">
+            <h2>3.1 - Carrinho (Signals)</h2>
+            <button (click)="adicionarAoCarrinho('Novo Item', 50)">
+                Adicionar Item R$ 50
+            </button>
+
+            <ul class="lista-carrinho">
+                @for (item of itens(); track item.id) {
+                <li>{{ item.nome }} - R$ {{ item.preco }}</li>
+                } @empty {
+                <li>Carrinho vazio</li>
+                }
+            </ul>
+            <div class="total-badge">Total: R$ {{ total() }}</div>
+        </section>
+
+        <section class="card-puro">
+            <h2>3.2 - Lista de Tarefas (NgRx)</h2>
+            <ul class="lista-todo">
+                @for (todo of todos$ | async; track todo.id) {
+                <li [class.done]="todo.concluida" (click)="toggleTodo(todo.id)">
+                    <input type="checkbox" [checked]="todo.concluida" />
+                    {{ todo.titulo }}
+                </li>
+                }
+            </ul>
+        </section>
+    </div>
+</div>

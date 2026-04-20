@@ -1,0 +1,42 @@
+<div class="container-app">
+    <header>
+        <h1>Listagem de Usuários - Gestão - (Exercício 4)</h1>
+        <mat-form-field appearance="outline" class="busca">
+            <mat-label>Filtrar por nome</mat-label>
+            <input
+                matInput
+                (input)="onBusca($event)"
+                placeholder="Ex: Manoela"
+            />
+        </mat-form-field>
+    </header>
+
+    @if (store.loading()) {
+    <div class="loading-box">
+        <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    } @else {
+    <div class="grid-usuarios">
+        @for (user of store.usuarios(); track user.id) {
+        <mat-card class="usuario-card">
+            <mat-card-header>
+                <mat-card-title>{{ user.nome }}</mat-card-title>
+                <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p><strong>CPF:</strong> {{ user.cpf }}</p>
+                <p>
+                    <strong>Tel:</strong> {{ user.telefone }} ({{
+                    user.tipoTelefone }})
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-flat-button color="primary">EDITAR</button>
+            </mat-card-actions>
+        </mat-card>
+        } @empty {
+        <p class="empty">Nenhum usuário encontrado para esta busca.</p>
+        }
+    </div>
+    }
+</div>

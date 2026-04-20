@@ -1,0 +1,28 @@
+<div class="busca-container">
+    <input
+        type="text"
+        placeholder="Digite para buscar usuários (ex: Mano)..."
+        (input)="onSearch($event)"
+        [disabled]="isLoading"
+    />
+
+    <div *ngIf="isLoading" class="loading-spinner">
+        <span>🔍 Buscando no servidor...</span>
+    </div>
+
+    <ul *ngIf="resultados$ | async as resultados; else inicial">
+        <li *ngFor="let usuario of resultados">
+            <strong>{{ usuario.nome }}</strong> - {{ usuario.email }}
+        </li>
+
+        <li *ngIf="resultados.length === 0 && termoBusca" class="no-results">
+            Nenhum usuário encontrado para "{{ termoBusca }}".
+        </li>
+    </ul>
+
+    <ng-template #inicial>
+        <p *ngIf="!isLoading">
+            Comece a digitar para ver a mágica do debounce.
+        </p>
+    </ng-template>
+</div>
