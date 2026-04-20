@@ -47,119 +47,106 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
         </mat-card-content>
       </mat-card>
 
-      <div class="exercises-nav">
-        <button mat-raised-button (click)="selectedExercise = 1" [color]="selectedExercise === 1 ? 'primary' : ''">
-          Exercício 1 - TypeScript
-        </button>
-        <button mat-raised-button (click)="selectedExercise = 2" [color]="selectedExercise === 2 ? 'primary' : ''">
-          Exercício 2 - Angular & RxJS
-        </button>
-        <button mat-raised-button (click)="selectedExercise = 3" [color]="selectedExercise === 3 ? 'primary' : ''">
-          Exercício 3 - Signals & NgRx
-        </button>
-        <button mat-raised-button (click)="selectedExercise = 4" [color]="selectedExercise === 4 ? 'primary' : ''">
-          Exercício 4 - Store com Signals
-        </button>
+      <div class="exercises-grid">
+        <mat-card class="exercise-card">
+          <mat-card-header>
+            <mat-card-title>Exercício 1 - TypeScript</mat-card-title>
+            <mat-card-subtitle>Refatoração e Generics</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Refatoração de código com classes e implementação de função de paginação genérica.</p>
+            <button mat-raised-button color="accent" (click)="showCode1 = !showCode1" class="code-toggle">
+              {{ showCode1 ? 'Ocultar Código' : 'Ver Código' }}
+            </button>
+            <div class="code-section" *ngIf="showCode1">
+              <h4>Arquivos Principais:</h4>
+              <ul class="file-list">
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-1/exercicio-1.component.ts" target="_blank">exercicio-1.component.ts</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-1/exercicio-1.logic.ts" target="_blank">exercicio-1.logic.ts</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-1/exercicio-1.component.html" target="_blank">exercicio-1.component.html</a></li>
+              </ul>
+            </div>
+            <div class="demo-section" *ngIf="!showCode1">
+              <app-exercicio-1></app-exercicio-1>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="exercise-card">
+          <mat-card-header>
+            <mat-card-title>Exercício 2 - Angular & RxJS</mat-card-title>
+            <mat-card-subtitle>Change Detection e Operadores RxJS</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Demonstração de OnPush, switchMap, debounceTime e trackBy para performance.</p>
+            <button mat-raised-button color="accent" (click)="showCode2 = !showCode2" class="code-toggle">
+              {{ showCode2 ? 'Ocultar Código' : 'Ver Código' }}
+            </button>
+            <div class="code-section" *ngIf="showCode2">
+              <h4>Arquivos Principais:</h4>
+              <ul class="file-list">
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/tree/master/src/app/exercicios/exercicio-2" target="_blank">exercicio-2/ (todos os sub-exercícios)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-2/detect-onpush/detect-onpush.ts" target="_blank">detect-onpush.ts (Change Detection)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-2/busca-debounce/busca-debounce.ts" target="_blank">busca-debounce.ts (Debounce)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-2/rxjs-switchmap/rxjs-switchmap.ts" target="_blank">rxjs-switchmap.ts (SwitchMap)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-2/performance-lista/performance-lista.ts" target="_blank">performance-lista.ts (TrackBy)</a></li>
+              </ul>
+            </div>
+            <div class="demo-section" *ngIf="!showCode2">
+              <app-exercicio-2></app-exercicio-2>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="exercise-card">
+          <mat-card-header>
+            <mat-card-title>Exercício 3 - Signals & NgRx</mat-card-title>
+            <mat-card-subtitle>Signals e Gerenciamento de Estado</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Signals para carrinho e NgRx para lista de tarefas com Effects.</p>
+            <button mat-raised-button color="accent" (click)="showCode3 = !showCode3" class="code-toggle">
+              {{ showCode3 ? 'Ocultar Código' : 'Ver Código' }}
+            </button>
+            <div class="code-section" *ngIf="showCode3">
+              <h4>Arquivos Principais:</h4>
+              <ul class="file-list">
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-3/exercicio-3.ts" target="_blank">exercicio-3.ts (Componente Principal)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-3/exercicio-3.logic.ts" target="_blank">exercicio-3.logic.ts (NgRx Store)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-3/exercicio-3.html" target="_blank">exercicio-3.html (Template)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/app.config.ts" target="_blank">app.config.ts (Configuração NgRx)</a></li>
+              </ul>
+            </div>
+            <div class="demo-section" *ngIf="!showCode3">
+              <app-exercicio-3></app-exercicio-3>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="exercise-card">
+          <mat-card-header>
+            <mat-card-title>Exercício 4 - Store com Signals</mat-card-title>
+            <mat-card-subtitle>Store Personalizada e Busca</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Store com Signals, debounce na busca e integração com API mock.</p>
+            <button mat-raised-button color="accent" (click)="showCode4 = !showCode4" class="code-toggle">
+              {{ showCode4 ? 'Ocultar Código' : 'Ver Código' }}
+            </button>
+            <div class="code-section" *ngIf="showCode4">
+              <h4>Arquivos Principais:</h4>
+              <ul class="file-list">
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-4/exercicio-4.ts" target="_blank">exercicio-4.ts (Componente)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-4/exercicio-4.logic.ts" target="_blank">exercicio-4.logic.ts (Store com Signals)</a></li>
+                <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-4/exercicio-4.html" target="_blank">exercicio-4.html (Template)</a></li>
+              </ul>
+            </div>
+            <div class="demo-section" *ngIf="!showCode4">
+              <app-exercicio-4></app-exercicio-4>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </div>
-
-      <mat-card class="exercise-card" *ngIf="selectedExercise === 1">
-        <mat-card-header>
-          <mat-card-title>Exercício 1 - TypeScript</mat-card-title>
-          <mat-card-subtitle>Refatoração e Generics</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Refatoração de código com classes e implementação de função de paginação genérica.</p>
-          <button mat-raised-button color="accent" (click)="showCode = !showCode" class="code-toggle">
-            {{ showCode ? 'Ocultar Código' : 'Ver Código' }}
-          </button>
-          <div class="code-section" *ngIf="showCode">
-            <h4>Arquivos Principais:</h4>
-            <ul class="file-list">
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-1/exercicio-1.component.ts" target="_blank">exercicio-1.component.ts</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-1/exercicio-1.logic.ts" target="_blank">exercicio-1.logic.ts</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-1/exercicio-1.component.html" target="_blank">exercicio-1.component.html</a></li>
-            </ul>
-          </div>
-          <div class="demo-section" *ngIf="!showCode">
-            <app-exercicio-1></app-exercicio-1>
-          </div>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card class="exercise-card" *ngIf="selectedExercise === 2">
-        <mat-card-header>
-          <mat-card-title>Exercício 2 - Angular & RxJS</mat-card-title>
-          <mat-card-subtitle>Change Detection e Operadores RxJS</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Demonstração de OnPush, switchMap, debounceTime e trackBy para performance.</p>
-          <button mat-raised-button color="accent" (click)="showCode = !showCode" class="code-toggle">
-            {{ showCode ? 'Ocultar Código' : 'Ver Código' }}
-          </button>
-          <div class="code-section" *ngIf="showCode">
-            <h4>Arquivos Principais:</h4>
-            <ul class="file-list">
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/tree/master/src/app/exercicios/exercicio-2" target="_blank">exercicio-2/ (todos os sub-exercícios)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-2/detect-onpush/detect-onpush.ts" target="_blank">detect-onpush.ts (Change Detection)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-2/busca-debounce/busca-debounce.ts" target="_blank">busca-debounce.ts (Debounce)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-2/rxjs-switchmap/rxjs-switchmap.ts" target="_blank">rxjs-switchmap.ts (SwitchMap)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-2/performance-lista/performance-lista.ts" target="_blank">performance-lista.ts (TrackBy)</a></li>
-            </ul>
-          </div>
-          <div class="demo-section" *ngIf="!showCode">
-            <app-exercicio-2></app-exercicio-2>
-          </div>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card class="exercise-card" *ngIf="selectedExercise === 3">
-        <mat-card-header>
-          <mat-card-title>Exercício 3 - Signals & NgRx</mat-card-title>
-          <mat-card-subtitle>Signals e Gerenciamento de Estado</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Signals para carrinho e NgRx para lista de tarefas com Effects.</p>
-          <button mat-raised-button color="accent" (click)="showCode = !showCode" class="code-toggle">
-            {{ showCode ? 'Ocultar Código' : 'Ver Código' }}
-          </button>
-          <div class="code-section" *ngIf="showCode">
-            <h4>Arquivos Principais:</h4>
-            <ul class="file-list">
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-3/exercicio-3.ts" target="_blank">exercicio-3.ts (Componente Principal)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-3/exercicio-3.logic.ts" target="_blank">exercicio-3.logic.ts (NgRx Store)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-3/exercicio-3.html" target="_blank">exercicio-3.html (Template)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/app.config.ts" target="_blank">app.config.ts (Configuração NgRx)</a></li>
-            </ul>
-          </div>
-          <div class="demo-section" *ngIf="!showCode">
-            <app-exercicio-3></app-exercicio-3>
-          </div>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card class="exercise-card" *ngIf="selectedExercise === 4">
-        <mat-card-header>
-          <mat-card-title>Exercício 4 - Store com Signals</mat-card-title>
-          <mat-card-subtitle>Store Personalizada e Busca</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Store com Signals, debounce na busca e integração com API mock.</p>
-          <button mat-raised-button color="accent" (click)="showCode = !showCode" class="code-toggle">
-            {{ showCode ? 'Ocultar Código' : 'Ver Código' }}
-          </button>
-          <div class="code-section" *ngIf="showCode">
-            <h4>Arquivos Principais:</h4>
-            <ul class="file-list">
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-4/exercicio-4.ts" target="_blank">exercicio-4.ts (Componente)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-4/exercicio-4.logic.ts" target="_blank">exercicio-4.logic.ts (Store com Signals)</a></li>
-              <li><a href="https://github.com/Manoelah20/desafio-projeto-verdureira/blob/master/src/app/exercicios/exercicio-4/exercicio-4.html" target="_blank">exercicio-4.html (Template)</a></li>
-            </ul>
-          </div>
-          <div class="demo-section" *ngIf="!showCode">
-            <app-exercicio-4></app-exercicio-4>
-          </div>
-        </mat-card-content>
-      </mat-card>
     </div>
   `,
   styles: [`
@@ -191,6 +178,18 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
       margin-bottom: 40px;
       border-radius: 16px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .exercises-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .exercises-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .note {
@@ -334,6 +333,8 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
   `]
 })
 export class AppComponent {
-  selectedExercise = 1;
-  showCode = false;
+  showCode1 = false;
+  showCode2 = false;
+  showCode3 = false;
+  showCode4 = false;
 }
