@@ -19,7 +19,7 @@
         <p><strong>Itens na página:</strong></p>
 
         <ul *ngIf="resultadoPaginacao?.itens?.length; else listaVazia">
-            <li *ngFor="let item of resultadoPaginacao.itens">
+            <li *ngFor="let item of resultadoPaginacao!.itens">
                 {{ item.nome }}
             </li>
         </ul>

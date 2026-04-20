@@ -8,7 +8,7 @@ import { Verdureira, filtrarEPaginar, Pagina } from "./exercicio-1.logic";
   standalone: true,
   imports: [CommonModule],
   templateUrl: "./exercicio-1.component.html",
-  styleUrls: ["./exercicio-1.component.css"],
+  styleUrls: ["./exercicio-1.css"],
 })
 export class Exercicio1Component implements OnInit {
   // Variáveis para o HTML exibir
