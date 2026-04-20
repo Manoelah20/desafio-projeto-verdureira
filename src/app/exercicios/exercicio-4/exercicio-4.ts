@@ -34,7 +34,6 @@ export class Exercicio4Component implements OnInit {
   ngOnInit() {
     this.store.carregar();
 
-    // Implementação de Debounce de 300ms com RxJS
     this.buscaSubject
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((termo) => this.store.carregar(termo));

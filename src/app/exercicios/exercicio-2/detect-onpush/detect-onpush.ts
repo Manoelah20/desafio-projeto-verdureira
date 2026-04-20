@@ -32,7 +32,7 @@ export class DetectOnpushComponent implements OnInit, OnDestroy {
       .buscarPorId(1)
       .subscribe((pessoa) => {
         this.texto = `Nome: ${pessoa.nome}`;
-        this.cdr.markForCheck(); // Notifica o Angular OnPush
+        this.cdr.markForCheck();
       });
 
     this.intervalId = setInterval(() => {

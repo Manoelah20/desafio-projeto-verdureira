@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-// Importamos a lógica que criamos no outro arquivo
 import { Verdureira, filtrarEPaginar, Pagina } from "./exercicio-1.logic";
 
 @Component({
@@ -11,18 +10,15 @@ import { Verdureira, filtrarEPaginar, Pagina } from "./exercicio-1.logic";
   styleUrls: ["./exercicio-1.css"],
 })
 export class Exercicio1Component implements OnInit {
-  // Variáveis para o HTML exibir
   resumoProduto: string = "";
   temEstoque: boolean = false;
   resultadoPaginacao?: Pagina<{ nome: string }>;
 
   ngOnInit() {
-    // Resposta 1.1
     const v = new Verdureira();
     this.resumoProduto = v.getDescricaoProduto(1);
     this.temEstoque = v.hasEstoqueProduto(2);
 
-    // Resposta 1.2
     const listaUsuarios = [
       { nome: "Manoela" },
       { nome: "Ana" },

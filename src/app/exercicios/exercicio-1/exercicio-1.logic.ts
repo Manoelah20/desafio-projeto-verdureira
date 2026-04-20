@@ -1,10 +1,9 @@
-// 1.1 - Refatoração
 export class Produto {
   constructor(
     public readonly id: number,
     public readonly descricao: string,
     public quantidadeEstoque: number,
-  ) {}
+  ) { }
 }
 
 export class Verdureira {
@@ -31,7 +30,6 @@ export class Verdureira {
   }
 }
 
-// 1.2 - Generics e Paginação
 export interface PaginaParams {
   pagina: number;
   tamanho: number;

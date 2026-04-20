@@ -34,7 +34,6 @@ import {
 export class Exercicio3Component {
   private store = inject(Store);
 
-  // --- 3.1 SIGNALS (Carrinho) ---
   private itensSignal = signal<CartItem[]>([]);
   readonly totalChanged = output<number>();
   readonly itens = this.itensSignal.asReadonly();
@@ -59,7 +58,6 @@ export class Exercicio3Component {
     ]);
   }
 
-  // --- 3.2 NGRX (To-do) ---
   todos$ = this.store.select(selectAllTodos);
 
   carregarTodos() {
@@ -71,7 +69,6 @@ export class Exercicio3Component {
   }
 }
 
-// --- EFFECTS (Podem ficar no mesmo arquivo para simplificar seu projeto atual) ---
 @Injectable({ providedIn: "root" })
 export class TodoEffects {
   private actions$ = inject(Actions);
