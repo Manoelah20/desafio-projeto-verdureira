@@ -23,7 +23,8 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
   ],
   template: `
     <mat-toolbar color="primary">
-      <span>Desafio Angular - Projeto Verdureira</span>
+      <span class="toolbar-title">Desafio Angular - Projeto Verdureira</span>
+      <span class="toolbar-author">Manoela Harrison - Teste Técnico</span>
     </mat-toolbar>
     
     <div class="container">
@@ -162,6 +163,24 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
     </div>
   `,
   styles: [`
+    mat-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .toolbar-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .toolbar-author {
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
     .container {
       max-width: 1200px;
       margin: 40px auto;
