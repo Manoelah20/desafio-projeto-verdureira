@@ -1,69 +1,75 @@
 # Projeto Verdureira - Desafio Angular
 
-## Stack Tecnologia
+Este projeto demonstra conhecimentos práticos em Angular 17+, RxJS, NgRx/Signals, Angular Material, TypeScript e testes unitários.
 
-- Angular 17+
-- Angular Material
-- Signals
-- RxJS
-- Vitest
-
-## Pré-requisitos
-
-- Node.js 18+
-- npm 9+
-
-## Instalação
+## 🚀 Como Executar
 
 ```bash
-# Clonar o repositório
-git clone <repo-url>
-
-# Entrar no diretório
-cd projeto-verdureira
-
 # Instalar dependências
 npm install
-```
 
-## Executar projeto
-
-```bash
-# Modo desenvolvimento
+# Iniciar servidor de desenvolvimento
 npm start
 
 # Acesse http://localhost:4200
 ```
 
-## Exercícios Implementados
+## 📋 Estrutura do Projeto
+
+O projeto é organizado em 4 exercícios, todos acessíveis através de uma interface com tabs:
 
 ### Exercício 1 - TypeScript
-- Refatoração de classes com TypeScript (removendo `any`)
-- Generic para paginação com tipagem forte
+**Objetivo:** Refatoração e Generics
+- Refatoração de código com classes TypeScript (removendo `any`)
+- Implementação de função de paginação genérica com tipagem forte
 
-### Exercício 2 - Angular + RxJS
-- Change Detection with OnPush
-- Eliminação de subscribe aninhado com switchMap
-- Busca com debounce de 500ms
-- Performance com trackBy
+### Exercício 2 - Angular & RxJS
+**Objetivo:** Change Detection e Operadores RxJS
+- Change Detection com OnPush e ChangeDetectorRef
+- Eliminação de subscriptions aninhadas com switchMap
+- Busca com debounce de 500ms e async pipe
+- Performance com trackBy em listas
 
-### Exercício 3 - Signals + NgRx
-- 3.1: Carrinho com Signals (signal, computed, output, effect)
-- 3.2: To-do com NgRx (Actions, Reducer, Selectors, Effect)
+### Exercício 3 - Signals & NgRx
+**Objetivo:** Gerenciamento de Estado
+- **3.1:** Carrinho com Signals (signal, computed, output, effect)
+- **3.2:** Lista de tarefas com NgRx (Actions, Reducer, Selectors, Effects)
 
-### Exercício 4 - Aplicação Completa
+### Exercício 4 - Store Personalizada
+**Objetivo:** Integração completa
+- Store personalizada com Signals
 - Listagem de usuários com Angular Material
-- Cards com nome, e-mail e botão editar
-- Filtro com debounce 300ms
+- Busca com debounce de 300ms
 - Estados de loading e erro
-- Formulário reativo com validações
+- Cards com informações detalhadas
 
-## Executar testes
+## 🛠️ Stack Tecnológica
+
+- **Angular 17+** (Standalone Components, Signals)
+- **RxJS** (Operadores, Subjects, Observables)
+- **NgRx** (Store, Effects, Actions, Reducers)
+- **Angular Material** (Componentes UI)
+- **TypeScript** (Generics, Interfaces, Tipagem)
+- **Vitest** (Testes Unitários)
+
+## 🧪 Testes
 
 ```bash
-# Todos os testes
+# Executar todos os testes
 npm test
 
-# Cobertura
+# Executar com cobertura
 npm run test:coverage
+```
+
+## 📁 Estrutura de Arquivos
+
+```
+src/app/
+├── exercicios/
+│   ├── exercicio-1/         # TypeScript: Refatoração e Generics
+│   ├── exercicio-2/         # Angular & RxJS: OnPush, switchMap, debounce, trackBy
+│   ├── exercicio-3/         # Signals & NgRx: Carrinho e To-do
+│   └── exercicio-4/         # Store Personalizada: Listagem e Busca
+└── app.component.ts         # Interface principal com tabs para navegação
 ```
