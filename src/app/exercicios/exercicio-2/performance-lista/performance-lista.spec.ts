@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PerformanceLista } from './performance-lista';
+import { PerformanceListaComponent } from './performance-lista';
 
-describe('PerformanceLista', () => {
-  let component: PerformanceLista;
-  let fixture: ComponentFixture<PerformanceLista>;
+describe('PerformanceListaComponent', () => {
+  let component: PerformanceListaComponent;
+  let fixture: ComponentFixture<PerformanceListaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PerformanceLista]
+      imports: [PerformanceListaComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(PerformanceLista);
+    fixture = TestBed.createComponent(PerformanceListaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

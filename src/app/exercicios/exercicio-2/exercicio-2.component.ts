@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { DetecaoOnpushComponent } from "./detecao-onpush/detecao-onpush";
+import { DetectOnpushComponent } from "./detect-onpush/detect-onpush";
 import { RxjsSwitchmapComponent } from "./rxjs-switchmap/rxjs-switchmap";
 import { BuscaDebounceComponent } from "./busca-debounce/busca-debounce";
 import { PerformanceListaComponent } from "./performance-lista/performance-lista";
@@ -10,11 +10,11 @@ import { PerformanceListaComponent } from "./performance-lista/performance-lista
   standalone: true,
   imports: [
     CommonModule,
-    DetecaoOnpushComponent,
+    DetectOnpushComponent,
     RxjsSwitchmapComponent,
     BuscaDebounceComponent,
     PerformanceListaComponent,
   ],
   templateUrl: "./exercicio-2.component.html",
 })
-export class Exercicio2Component {}
+export class Exercicio2Component { }

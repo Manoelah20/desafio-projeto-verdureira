@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuscaDebounce } from './busca-debounce';
+import { BuscaDebounceComponent } from './busca-debounce';
 
-describe('BuscaDebounce', () => {
-  let component: BuscaDebounce;
-  let fixture: ComponentFixture<BuscaDebounce>;
+describe('BuscaDebounceComponent', () => {
+  let component: BuscaDebounceComponent;
+  let fixture: ComponentFixture<BuscaDebounceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BuscaDebounce]
+      imports: [BuscaDebounceComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(BuscaDebounce);
+    fixture = TestBed.createComponent(BuscaDebounceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

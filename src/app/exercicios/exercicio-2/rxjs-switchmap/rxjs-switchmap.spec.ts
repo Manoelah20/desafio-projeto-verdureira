@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RxjsSwitchmap } from './rxjs-switchmap';
+import { RxjsSwitchmapComponent } from './rxjs-switchmap';
 
-describe('RxjsSwitchmap', () => {
-  let component: RxjsSwitchmap;
-  let fixture: ComponentFixture<RxjsSwitchmap>;
+describe('RxjsSwitchmapComponent', () => {
+  let component: RxjsSwitchmapComponent;
+  let fixture: ComponentFixture<RxjsSwitchmapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RxjsSwitchmap]
+      imports: [RxjsSwitchmapComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(RxjsSwitchmap);
+    fixture = TestBed.createComponent(RxjsSwitchmapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

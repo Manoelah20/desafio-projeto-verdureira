@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Subject } from "rxjs";
 import { switchMap, takeUntil, map } from "rxjs/operators";
 import { PessoaService } from "./rxjs-switchmap.logic";
@@ -6,6 +7,7 @@ import { PessoaService } from "./rxjs-switchmap.logic";
 @Component({
   selector: "app-rxjs-switchmap",
   standalone: true,
+  imports: [CommonModule],
   providers: [PessoaService],
   templateUrl: "./rxjs-switchmap.html",
 })
@@ -13,7 +15,7 @@ export class RxjsSwitchmapComponent implements OnInit, OnDestroy {
   texto: string = "";
   private destroy$ = new Subject<void>();
 
-  constructor(private readonly pessoaService: PessoaService) {}
+  constructor(private readonly pessoaService: PessoaService) { }
 
   ngOnInit(): void {
     const pessoaId = 1;

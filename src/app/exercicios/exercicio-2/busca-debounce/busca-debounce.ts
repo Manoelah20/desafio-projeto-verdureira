@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Subject, of } from "rxjs";
 import {
   debounceTime,
@@ -12,6 +13,7 @@ import { BuscaUsuarioService } from "./busca-debounce.logic";
 @Component({
   selector: "app-busca-debounce",
   standalone: true,
+  imports: [CommonModule],
   templateUrl: "./busca-debounce.html",
   styleUrls: ["./busca-debounce.css"],
 })
@@ -28,8 +30,8 @@ export class BuscaDebounceComponent implements OnDestroy {
     switchMap((termo) =>
       termo
         ? of([{ nome: "Resultado Mock", email: "test@test.com" }]).pipe(
-            tap(() => (this.isLoading = false)),
-          )
+          tap(() => (this.isLoading = false)),
+        )
         : of([]),
     ),
     takeUntil(this.destroy$),

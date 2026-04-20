@@ -1,9 +1,11 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Item } from "./performance-lista.logic";
 
 @Component({
   selector: "app-performance-lista",
   standalone: true,
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./performance-lista.html",
   styleUrls: ["./performance-lista.css"],

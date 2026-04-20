@@ -8,6 +8,7 @@ import {
   output,
   ChangeDetectionStrategy,
 } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Store } from "@ngrx/store";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { HttpClient } from "@angular/common/http";
@@ -25,6 +26,7 @@ import {
 @Component({
   selector: "app-exercicio-3",
   standalone: true,
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./exercicio-3.html",
   styleUrls: ["./exercicio-3.css"],

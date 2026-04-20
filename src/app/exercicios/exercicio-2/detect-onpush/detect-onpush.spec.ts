@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DetecaoOnpush } from "./detecao-onpush";
+import { DetectOnpushComponent } from "./detect-onpush";
 
-describe("DetecaoOnpush", () => {
-  let component: DetecaoOnpush;
-  let fixture: ComponentFixture<DetecaoOnpush>;
+describe("DetectOnpushComponent", () => {
+  let component: DetectOnpushComponent;
+  let fixture: ComponentFixture<DetectOnpushComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetecaoOnpush],
+      imports: [DetectOnpushComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DetecaoOnpush);
+    fixture = TestBed.createComponent(DetectOnpushComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

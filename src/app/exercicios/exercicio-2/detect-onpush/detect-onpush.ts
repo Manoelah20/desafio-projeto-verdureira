@@ -6,17 +6,17 @@ import {
   ChangeDetectorRef,
 } from "@angular/core";
 import { Subscription } from "rxjs";
-import { PessoaService } from "./detecao-onpush.logic";
+import { PessoaService } from "./detect-onpush.logic";
 
 @Component({
-  selector: "app-detecao-onpush",
+  selector: "app-detect-onpush",
   standalone: true,
   providers: [PessoaService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: "./detecao-onpush.html",
-  styleUrls: ["./detecao-onpush.css"],
+  templateUrl: "./detect-onpush.html",
+  styleUrls: ["./detect-onpush.css"],
 })
-export class DetecaoOnpushComponent implements OnInit, OnDestroy {
+export class DetectOnpushComponent implements OnInit, OnDestroy {
   texto: string = "";
   contador = 0;
   private subscriptionBuscarPessoa?: Subscription;
@@ -25,7 +25,7 @@ export class DetecaoOnpushComponent implements OnInit, OnDestroy {
   constructor(
     private readonly pessoaService: PessoaService,
     private cdr: ChangeDetectorRef,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.subscriptionBuscarPessoa = this.pessoaService
