@@ -164,73 +164,138 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
   styles: [`
     .container {
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 30px auto;
       padding: 0 20px;
     }
 
     .intro-card {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .note {
-      background: #e3f2fd;
-      padding: 10px;
-      border-radius: 4px;
-      margin-top: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-weight: 500;
     }
 
     .exercises-nav {
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 15px;
+      margin-bottom: 30px;
       flex-wrap: wrap;
     }
 
     .exercises-nav button {
       flex: 1;
       min-width: 200px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .exercises-nav button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .exercise-card {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .exercise-card:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
 
     .code-toggle {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      font-weight: 600;
     }
 
     .code-section {
-      background: #f5f5f5;
-      padding: 20px;
-      border-radius: 4px;
-      margin-top: 15px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 25px;
+      border-radius: 12px;
+      margin-top: 20px;
+      border-left: 4px solid #667eea;
     }
 
     .code-section h4 {
       margin-top: 0;
-      color: #1976d2;
+      color: #667eea;
+      font-size: 18px;
+      font-weight: 600;
     }
 
     .file-list {
       list-style: none;
       padding: 0;
+      margin: 15px 0;
     }
 
     .file-list li {
-      margin: 8px 0;
+      margin: 12px 0;
+      padding: 10px;
+      background: white;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .file-list li:hover {
+      background: #e8eaf6;
+      transform: translateX(5px);
     }
 
     .file-list a {
-      color: #1976d2;
+      color: #667eea;
       text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .file-list a::before {
+      content: '📄';
+      margin-right: 10px;
     }
 
     .file-list a:hover {
-      text-decoration: underline;
+      color: #764ba2;
     }
 
     .demo-section {
-      margin-top: 15px;
+      margin-top: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+
+    ::ng-deep mat-card-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 12px 12px 0 0;
+    }
+
+    ::ng-deep mat-card-title {
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    ::ng-deep mat-card-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
     }
   `]
 })
