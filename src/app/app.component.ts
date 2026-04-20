@@ -69,7 +69,7 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
         </mat-card-header>
         <mat-card-content>
           <p>Refatoração de código com classes e implementação de função de paginação genérica.</p>
-          <button mat-button (click)="showCode = !showCode" class="code-toggle">
+          <button mat-raised-button color="accent" (click)="showCode = !showCode" class="code-toggle">
             {{ showCode ? 'Ocultar Código' : 'Ver Código' }}
           </button>
           <div class="code-section" *ngIf="showCode">
@@ -93,7 +93,7 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
         </mat-card-header>
         <mat-card-content>
           <p>Demonstração de OnPush, switchMap, debounceTime e trackBy para performance.</p>
-          <button mat-button (click)="showCode = !showCode" class="code-toggle">
+          <button mat-raised-button color="accent" (click)="showCode = !showCode" class="code-toggle">
             {{ showCode ? 'Ocultar Código' : 'Ver Código' }}
           </button>
           <div class="code-section" *ngIf="showCode">
@@ -119,7 +119,7 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
         </mat-card-header>
         <mat-card-content>
           <p>Signals para carrinho e NgRx para lista de tarefas com Effects.</p>
-          <button mat-button (click)="showCode = !showCode" class="code-toggle">
+          <button mat-raised-button color="accent" (click)="showCode = !showCode" class="code-toggle">
             {{ showCode ? 'Ocultar Código' : 'Ver Código' }}
           </button>
           <div class="code-section" *ngIf="showCode">
@@ -144,7 +144,7 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
         </mat-card-header>
         <mat-card-content>
           <p>Store com Signals, debounce na busca e integração com API mock.</p>
-          <button mat-button (click)="showCode = !showCode" class="code-toggle">
+          <button mat-raised-button color="accent" (click)="showCode = !showCode" class="code-toggle">
             {{ showCode ? 'Ocultar Código' : 'Ver Código' }}
           </button>
           <div class="code-section" *ngIf="showCode">
