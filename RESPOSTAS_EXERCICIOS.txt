@@ -1,0 +1,521 @@
+RESPOSTAS DOS EXERCÍCIOS - PROJETO VERDUREIRA
+================================================
+
+Data: 20/04/2026
+
+EXERCÍCIO 1 - TypeScript (Generics, Interfaces, Tipagem)
+---------------------------------------------------------
+
+1.1 Refatoração de Código com Classes
+--------------------------------------
+CÓDIGO:
+
+export class Produto {
+  constructor(
+    public readonly id: number,
+    public readonly descricao: string,
+    public quantidadeEstoque: number,
+  ) { }
+}
+
+export class Verdureira {
+  private produtos: Produto[] = [
+    new Produto(1, "Maçã", 20),
+    new Produto(2, "Laranja", 0),
+    new Produto(3, "Limão", 20),
+  ];
+
+  private buscarProdutoPorId(produtoId: number): Produto | undefined {
+    return this.produtos.find((p) => p.id === produtoId);
+  }
+
+  getDescricaoProduto(produtoId: number): string {
+    const produto = this.buscarProdutoPorId(produtoId);
+    return !produto
+      ? "Produto não encontrado."
+      : `${produto.id} - ${produto.descricao} (${produto.quantidadeEstoque}x)`;
+  }
+
+  hasEstoqueProduto(produtoId: number): boolean {
+    const produto = this.buscarProdutoPorId(produtoId);
+    return !!produto && produto.quantidadeEstoque > 0;
+  }
+}
+
+1.2 Função de Paginação Genérica
+----------------------------------
+CÓDIGO:
+
+export interface PaginaParams {
+  pagina: number;
+  tamanho: number;
+}
+
+export interface Pagina<T> {
+  itens: T[];
+  total: number;
+}
+
+export function filtrarEPaginar<T>(
+  data: T[],
+  filterFn: (item: T) => boolean,
+  params: PaginaParams,
+): Pagina<T> {
+  const filtrados = data.filter(filterFn);
+  const inicio = (params.pagina - 1) * params.tamanho;
+  return {
+    itens: filtrados.slice(inicio, inicio + params.tamanho),
+    total: filtrados.length,
+  };
+}
+
+EXERCÍCIO 2 - Angular & RxJS
+------------------------------
+
+2.1 Change Detection (OnPush)
+------------------------------
+CÓDIGO:
+
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+} from "@angular/core";
+import { Subscription } from "rxjs";
+import { PessoaService } from "./detect-onpush.logic";
+
+@Component({
+  selector: "app-detect-onpush",
+  standalone: true,
+  providers: [PessoaService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: "./detect-onpush.html",
+  styleUrls: ["./detect-onpush.css"],
+})
+export class DetectOnpushComponent implements OnInit, OnDestroy {
+  texto: string = "";
+  contador = 0;
+  private subscriptionBuscarPessoa?: Subscription;
+  private intervalId: any;
+
+  constructor(
+    private readonly pessoaService: PessoaService,
+    private cdr: ChangeDetectorRef,
+  ) { }
+
+  ngOnInit(): void {
+    this.subscriptionBuscarPessoa = this.pessoaService
+      .buscarPorId(1)
+      .subscribe((pessoa) => {
+        this.texto = `Nome: ${pessoa.nome}`;
+        this.cdr.markForCheck();
+      });
+
+    this.intervalId = setInterval(() => {
+      this.contador++;
+      this.cdr.markForCheck();
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionBuscarPessoa?.unsubscribe();
+    if (this.intervalId) clearInterval(this.intervalId);
+  }
+}
+
+2.2 Operadores de Transformação (SwitchMap)
+-------------------------------------------
+CÓDIGO:
+
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Subject } from "rxjs";
+import { switchMap, takeUntil, map } from "rxjs/operators";
+import { PessoaService } from "./rxjs-switchmap.logic";
+
+@Component({
+  selector: "app-rxjs-switchmap",
+  standalone: true,
+  imports: [CommonModule],
+  providers: [PessoaService],
+  templateUrl: "./rxjs-switchmap.html",
+})
+export class RxjsSwitchmapComponent implements OnInit, OnDestroy {
+  texto: string = "";
+  private destroy$ = new Subject<void>();
+
+  constructor(private readonly pessoaService: PessoaService) { }
+
+  ngOnInit(): void {
+    const pessoaId = 1;
+    this.pessoaService
+      .buscarPorId(pessoaId)
+      .pipe(
+        switchMap((pessoa) =>
+          this.pessoaService
+            .buscarQuantidadeFamiliares(pessoaId)
+            .pipe(map((qtd) => ({ pessoa, qtd }))),
+        ),
+        takeUntil(this.destroy$),
+      )
+      .subscribe(({ pessoa, qtd }) => {
+        this.texto = `Nome: ${pessoa.nome} | familiares: ${qtd}`;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+
+2.3 Busca com Debounce & Async Pipe
+-----------------------------------
+CÓDIGO:
+
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Subject } from "rxjs";
+import { debounceTime, distinctUntilChanged, takeUntil, switchMap } from "rxjs/operators";
+import { PessoaService } from "./busca-debounce.logic";
+
+@Component({
+  selector: "app-busca-debounce",
+  standalone: true,
+  imports: [CommonModule],
+  providers: [PessoaService],
+  templateUrl: "./busca-debounce.html",
+})
+export class BuscaDebounceComponent implements OnInit, OnDestroy {
+  pessoas: any[] = [];
+  loading: boolean = false;
+  buscaSubject = new Subject<string>();
+  destroy$ = new Subject<void>();
+
+  constructor(private readonly pessoaService: PessoaService) { }
+
+  ngOnInit(): void {
+    this.buscaSubject
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap((termo) => {
+          this.loading = true;
+          return this.pessoaService.buscar(termo);
+        }),
+        takeUntil(this.destroy$),
+      )
+      .subscribe((pessoas) => {
+        this.pessoas = pessoas;
+        this.loading = false;
+      });
+  }
+
+  onBusca(event: Event): void {
+    const valor = (event.target as HTMLInputElement).value;
+    this.buscaSubject.next(valor);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+
+2.4 Performance com trackBy
+----------------------------
+CÓDIGO:
+
+import { Component, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ItemService } from "./performance-lista.logic";
+import { ChangeDetectionStrategy } from "@angular/core";
+
+@Component({
+  selector: "app-performance-lista",
+  standalone: true,
+  imports: [CommonModule],
+  providers: [ItemService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: "./performance-lista.html",
+})
+export class PerformanceListaComponent implements OnInit {
+  itens: any[] = [];
+  filtro: string = "";
+
+  constructor(private readonly itemService: ItemService) { }
+
+  ngOnInit(): void {
+    this.itens = this.itemService.listar();
+  }
+
+  trackByFn(index: number, item: any): number {
+    return item.id;
+  }
+}
+
+EXERCÍCIO 3 - NgRx (State Management)
+--------------------------------------
+
+3.1 Actions, Reducer, Selectors
+-------------------------------
+CÓDIGO:
+
+import {
+  createAction,
+  props,
+  createReducer,
+  on,
+  createSelector,
+  createFeatureSelector,
+} from "@ngrx/store";
+
+export interface Todo {
+  id: number;
+  titulo: string;
+  concluida: boolean;
+}
+
+export interface TodoState {
+  todos: Todo[];
+  loading: boolean;
+  erro: string | null;
+}
+
+export const loadTodos = createAction("[Todo] Load Todos");
+export const loadTodosSuccess = createAction(
+  "[Todo] Load Todos Success",
+  props<{ todos: Todo[] }>(),
+);
+export const loadTodosError = createAction(
+  "[Todo] Load Todos Error",
+  props<{ erro: string }>(),
+);
+export const toggleTodoComplete = createAction(
+  "[Todo] Toggle Todo Complete",
+  props<{ id: number }>(),
+);
+
+export const estadoInicial: TodoState = {
+  todos: [],
+  loading: false,
+  erro: null,
+};
+
+export const todoReducer = createReducer(
+  estadoInicial,
+  on(loadTodos, (state) => ({ ...state, loading: true })),
+  on(loadTodosSuccess, (state, { todos }) => ({
+    ...state,
+    todos,
+    loading: false,
+  })),
+  on(loadTodosError, (state, { erro }) => ({ ...state, loading: false, erro })),
+  on(toggleTodoComplete, (state, { id }) => ({
+    ...state,
+    todos: state.todos.map((t) =>
+      t.id === id ? { ...t, concluida: !t.concluida } : t,
+    ),
+  })),
+);
+
+export const selectTodoState = createFeatureSelector<TodoState>("todos");
+export const selectAllTodos = createSelector(
+  selectTodoState,
+  (state) => state.todos,
+);
+export const selectPendingTodos = createSelector(
+  selectTodoState,
+  (state) => state.todos.filter((t) => !t.concluida),
+);
+
+EXERCÍCIO 4 - Signals (State Management)
+----------------------------------------
+
+4.1 Store com Signals
+---------------------
+CÓDIGO:
+
+import { Injectable, signal, computed, inject } from "@angular/core";
+import { UsuarioService } from "./exercicio-4.logic";
+
+@Injectable({ providedIn: "root" })
+export class UsuarioStore {
+  private usuarioService = inject(UsuarioService);
+
+  private usuarios = signal<Usuario[]>([]);
+  private loading = signal<boolean>(false);
+  private erro = signal<string | null>(null);
+  private termoBusca = signal<string>("");
+
+  usuariosFiltrados = computed(() => {
+    const termo = this.termoBusca().toLowerCase();
+    return this.usuarios().filter(u =>
+      u.nome.toLowerCase().includes(termo) ||
+      u.email.toLowerCase().includes(termo)
+    );
+  });
+
+  readonly usuariosSignal = this.usuarios.asReadonly();
+  readonly loadingSignal = this.loading.asReadonly();
+  readonly erroSignal = this.erro.asReadonly();
+
+  carregar(termo: string = "") {
+    this.loading.set(true);
+    this.erro.set(null);
+    this.termoBusca.set(termo);
+
+    this.usuarioService.listar(termo).subscribe({
+      next: (usuarios) => {
+        this.usuarios.set(usuarios);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        this.erro.set(err.message);
+        this.loading.set(false);
+      },
+    });
+  }
+
+  criar(usuario: Partial<Usuario>) {
+    this.usuarioService.criar(usuario).subscribe({
+      next: (novoUsuario) => {
+        this.usuarios.update(usuarios => [...usuarios, novoUsuario]);
+      },
+      error: (err) => this.erro.set(err.message),
+    });
+  }
+
+  editar(usuario: Usuario) {
+    this.usuarioService.editar(usuario).subscribe({
+      next: (usuarioAtualizado) => {
+        this.usuarios.update(usuarios =>
+          usuarios.map(u => u.id === usuarioAtualizado.id ? usuarioAtualizado : u)
+        );
+      },
+      error: (err) => this.erro.set(err.message),
+    });
+  }
+
+  deletar(id: number) {
+    this.usuarioService.deletar(id).subscribe({
+      next: () => {
+        this.usuarios.update(usuarios => usuarios.filter(u => u.id !== id));
+      },
+      error: (err) => this.erro.set(err.message),
+    });
+  }
+}
+
+4.2 Componente Principal
+-----------------------
+CÓDIGO:
+
+import {
+  Component,
+  OnInit,
+  inject,
+  ChangeDetectionStrategy,
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MatCardModule } from "@angular/material/card";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UsuarioStore } from "./exercicio-4.logic";
+import { Subject, debounceTime, distinctUntilChanged, takeUntil } from "rxjs";
+import { Usuario } from "./exercicio-4.logic";
+
+@Component({
+  selector: "app-exercicio-4",
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+  ],
+  providers: [UsuarioStore],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: "./exercicio-4.html",
+  styleUrls: ["./exercicio-4.css"],
+})
+export class Exercicio4Component implements OnInit {
+  public store = inject(UsuarioStore);
+  private dialog = inject(MatDialog);
+  private fb = inject(FormBuilder);
+  private buscaSubject = new Subject<string>();
+  private destroy$ = new Subject<void>();
+
+  usuarioForm!: FormGroup;
+
+  ngOnInit() {
+    this.store.carregar();
+
+    this.buscaSubject
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((termo) => this.store.carregar(termo));
+
+    this.usuarioForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      nome: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      telefone: ['', [Validators.required]],
+      tipoTelefone: ['celular', [Validators.required]],
+    });
+  }
+
+  onBusca(event: Event) {
+    const valor = (event.target as HTMLInputElement).value;
+    this.buscaSubject.next(valor);
+  }
+
+  abrirModalCriar() {
+    this.usuarioForm.reset();
+    const dialogRef = this.dialog.open(ModalUsuarioComponent, {
+      width: '500px',
+      data: { usuario: null, form: this.usuarioForm },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.store.criar(result);
+      }
+    });
+  }
+
+  abrirModalEditar(usuario: Usuario) {
+    this.usuarioForm.patchValue(usuario);
+    const dialogRef = this.dialog.open(ModalUsuarioComponent, {
+      width: '500px',
+      data: { usuario, form: this.usuarioForm },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.store.editar({ ...usuario, ...result });
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+
+TECNOLOGIAS UTILIZADAS
+----------------------
+- Angular 17+ (Standalone Components)
+- RxJS (switchMap, debounceTime, distinctUntilChanged, takeUntil)
+- NgRx (Actions, Reducer, Selectors)
+- Angular Signals (computed, signals)
+- Angular Material (Dialog, FormField, Input, Button, etc.)
+- TypeScript (Generics, Interfaces, Tipagem)
+- ChangeDetectionStrategy (OnPush)
+- Reactive Forms (FormBuilder, Validators)
