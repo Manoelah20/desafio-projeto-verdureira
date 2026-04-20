@@ -70,3 +70,7 @@ export const selectAllTodos = createSelector(
   selectTodoState,
   (state) => state.todos,
 );
+export const selectPendingTodos = createSelector(
+  selectTodoState,
+  (state) => state.todos.filter((t) => !t.concluida),
+);

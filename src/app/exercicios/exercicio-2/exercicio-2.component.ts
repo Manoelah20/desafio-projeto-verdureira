@@ -16,5 +16,6 @@ import { PerformanceListaComponent } from "./performance-lista/performance-lista
     PerformanceListaComponent,
   ],
   templateUrl: "./exercicio-2.component.html",
+  styleUrls: ["./exercicio-2.css"],
 })
 export class Exercicio2Component { }

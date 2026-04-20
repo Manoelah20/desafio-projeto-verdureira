@@ -1,35 +1,55 @@
-<section class="exercicio-wrapper">
+<div class="container-app">
     <header>
-        <h1>Exercício 2: Angular & RxJS</h1>
-        <p>
-            Demonstração de padrões avançados, performance e gerenciamento de
-            estado assíncrono.
-        </p>
+        <h1>2) ANGULAR & RXJS</h1>
     </header>
 
-    <div class="grid-exercicios">
-        <article class="secao-item">
-            <span class="badge">2.1</span>
-            <h3>Change Detection (OnPush)</h3>
-            <app-detect-onpush></app-detect-onpush>
-        </article>
+    <div class="exercises-section">
+        <h2 class="section-title">Exercícios</h2>
 
-        <article class="secao-item">
-            <span class="badge">2.2</span>
-            <h3>Operadores de Transformação (SwitchMap)</h3>
-            <app-rxjs-switchmap></app-rxjs-switchmap>
-        </article>
+        <div class="exercises-list">
+            <div class="exercise-item">
+                <div class="exercise-info">
+                    <span class="exercise-badge">2.1</span>
+                    <div>
+                        <h3>Change Detection (OnPush)</h3>
+                        <p>OnPush, ChangeDetectorRef, performance</p>
+                    </div>
+                </div>
+                <app-detect-onpush></app-detect-onpush>
+            </div>
 
-        <article class="secao-item">
-            <span class="badge">2.3</span>
-            <h3>Busca com Debounce & Async Pipe</h3>
-            <app-busca-debounce></app-busca-debounce>
-        </article>
+            <div class="exercise-item">
+                <div class="exercise-info">
+                    <span class="exercise-badge">2.2</span>
+                    <div>
+                        <h3>Operadores de Transformação (SwitchMap)</h3>
+                        <p>Eliminação de subscriptions aninhadas</p>
+                    </div>
+                </div>
+                <app-rxjs-switchmap></app-rxjs-switchmap>
+            </div>
 
-        <article class="secao-item">
-            <span class="badge">2.4</span>
-            <h3>Performance com trackBy</h3>
-            <app-performance-lista></app-performance-lista>
-        </article>
+            <div class="exercise-item">
+                <div class="exercise-info">
+                    <span class="exercise-badge">2.3</span>
+                    <div>
+                        <h3>Busca com Debounce & Async Pipe</h3>
+                        <p>debounceTime, distinctUntilChanged, switchMap</p>
+                    </div>
+                </div>
+                <app-busca-debounce></app-busca-debounce>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-info">
+                    <span class="exercise-badge">2.4</span>
+                    <div>
+                        <h3>Performance com trackBy</h3>
+                        <p>OnPush, trackBy em listas</p>
+                    </div>
+                </div>
+                <app-performance-lista></app-performance-lista>
+            </div>
+        </div>
     </div>
-</section>
+</div>

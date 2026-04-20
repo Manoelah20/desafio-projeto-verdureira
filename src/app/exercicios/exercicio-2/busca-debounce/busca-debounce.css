@@ -1,46 +1,50 @@
 :host {
     display: block;
-    font-family: "Segoe UI", Roboto, sans-serif;
+    color: #333;
+    font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
 }
 
 .busca-container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
+    color: #333;
 }
 
 input {
     padding: 12px 16px;
-    border: 2px solid #e2e8f0;
+    border: 1px solid #bbdefb;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 16px;
     transition: border-color 0.2s ease;
     outline: none;
+    font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
 }
 
 input:focus {
-    border-color: #3182ce;
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+    border-color: #1976d2;
+    box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
 }
 
 input:disabled {
-    background-color: #f7fafc;
+    background-color: #f5f5f5;
     cursor: not-allowed;
 }
 
 .loading {
-    color: #3182ce;
+    color: #666;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 15px;
 }
 
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    border: 1px solid #edf2f7;
+    border: 1px solid #e3f2fd;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -48,7 +52,8 @@ ul {
 li {
     padding: 12px 16px;
     background-color: #fff;
-    border-bottom: 1px solid #edf2f7;
+    border-bottom: 1px solid #e3f2fd;
+    color: #333;
 }
 
 li:last-child {
@@ -56,11 +61,11 @@ li:last-child {
 }
 
 li:hover {
-    background-color: #f8fafc;
+    background-color: #f5f9ff;
 }
 
 p {
-    color: #718096;
+    color: #666;
     font-style: italic;
     text-align: center;
 }

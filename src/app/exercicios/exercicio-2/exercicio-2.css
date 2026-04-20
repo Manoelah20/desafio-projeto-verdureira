@@ -1,22 +1,85 @@
-.container-exercicio {
-    max-width: 900px;
+.container-app {
+    padding: 32px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    color: #333;
 }
 
-.card {
-    margin-bottom: 30px;
-    padding: 20px;
-    background: #f8fafc;
-    border-left: 4px solid #4a90e2; /* Um detalhe azul para destacar */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+header {
+    margin-bottom: 32px;
+    text-align: center;
 }
 
-.card h3 {
-    margin-top: 0;
-    color: #1a202c;
+header h1 {
+    color: #333;
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0 0 32px 0;
+}
+
+.exercises-section {
+    margin-top: 40px;
+    color: #333;
+}
+
+.section-title {
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.5px;
+    margin: 0 0 20px 0;
+}
+
+.exercises-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #333;
+}
+
+.exercise-item {
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border: 1px solid #bbdefb;
+    background: white;
+    transition: box-shadow 0.2s;
+}
+
+.exercise-item:hover {
+    box-shadow: 0 4px 12px rgba(21, 101, 192, 0.15);
+}
+
+.exercise-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.exercise-badge {
+    background: #1976d2;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.exercise-info h3 {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #333;
+}
+
+.exercise-info p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
 }

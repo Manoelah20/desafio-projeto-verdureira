@@ -1,35 +1,55 @@
-<div class="container-exercicio">
+<div class="container-app">
     <header>
-        <h1>Exercício 3: Signals & NgRx</h1>
+        <h1>3) SIGNALS & NGRX</h1>
     </header>
 
-    <div class="grid">
-        <section class="card-puro">
-            <h2>3.1 - Carrinho (Signals)</h2>
-            <button (click)="adicionarAoCarrinho('Novo Item', 50)">
-                Adicionar Item R$ 50
-            </button>
+    <div class="exercises-section">
+        <h2 class="section-title">Exercícios</h2>
 
-            <ul class="lista-carrinho">
-                @for (item of itens(); track item.id) {
-                <li>{{ item.nome }} - R$ {{ item.preco }}</li>
-                } @empty {
-                <li>Carrinho vazio</li>
-                }
-            </ul>
-            <div class="total-badge">Total: R$ {{ total() }}</div>
-        </section>
+        <div class="exercises-list">
+            <div class="exercise-item">
+                <div class="exercise-info">
+                    <span class="exercise-badge">3.1</span>
+                    <div>
+                        <h3>Carrinho (Signals)</h3>
+                        <p>signal, computed, output, effect</p>
+                    </div>
+                </div>
+                <div class="exercise-content">
+                    <button (click)="adicionarAoCarrinho('Novo Item', 50)">
+                        Adicionar Item R$ 50
+                    </button>
 
-        <section class="card-puro">
-            <h2>3.2 - Lista de Tarefas (NgRx)</h2>
-            <ul class="lista-todo">
-                @for (todo of todos$ | async; track todo.id) {
-                <li [class.done]="todo.concluida" (click)="toggleTodo(todo.id)">
-                    <input type="checkbox" [checked]="todo.concluida" />
-                    {{ todo.titulo }}
-                </li>
-                }
-            </ul>
-        </section>
+                    <ul class="lista-carrinho">
+                        @for (item of itens(); track item.id) {
+                        <li>{{ item.nome }} - R$ {{ item.preco }}</li>
+                        } @empty {
+                        <li>Carrinho vazio</li>
+                        }
+                    </ul>
+                    <div class="total-badge">Total: R$ {{ total() }}</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-info">
+                    <span class="exercise-badge">3.2</span>
+                    <div>
+                        <h3>Lista de Tarefas (NgRx)</h3>
+                        <p>Actions, Reducer, Selectors, Effects</p>
+                    </div>
+                </div>
+                <div class="exercise-content">
+                    <ul class="lista-todo">
+                        @for (todo of todos$ | async; track todo.id) {
+                        <li [class.done]="todo.concluida" (click)="toggleTodo(todo.id)">
+                            <input type="checkbox" [checked]="todo.concluida" />
+                            {{ todo.titulo }}
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

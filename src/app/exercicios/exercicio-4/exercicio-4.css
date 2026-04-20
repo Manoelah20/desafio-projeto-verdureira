@@ -1,46 +1,123 @@
 .container-app {
-  padding: 20px;
-  max-width: 1200px;
+  padding: 32px;
+  max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
 }
 
 header {
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 header h1 {
-  color: #333;
-  margin-bottom: 20px;
+  color: #1565c0;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 32px 0;
 }
 
-.busca {
+.search-container {
   width: 100%;
-  max-width: 400px;
+}
+
+.search-field {
+  width: 100%;
+}
+
+.search-field .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+.users-section {
+  margin-top: 40px;
+}
+
+.section-title {
+  color: #1976d2;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 20px 0;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: white;
+  border: 1px solid #bbdefb;
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+}
+
+.user-item:hover {
+  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.15);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: #0d47a1;
+}
+
+.user-email {
+  font-size: 16px;
+  color: #1976d2;
+}
+
+.edit-button {
+  width: 44px;
+  height: 44px;
+}
+
+.edit-button mat-icon {
+  color: #1976d2;
 }
 
 .loading-box {
   display: flex;
   justify-content: center;
-  padding: 40px;
-}
-
-.grid-usuarios {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.usuario-card {
-  transition: transform 0.2s;
-}
-
-.usuario-card:hover {
-  transform: translateY(-4px);
+  padding: 48px;
 }
 
 .empty {
   text-align: center;
-  color: #666;
-  padding: 40px;
+  color: #1976d2;
+  padding: 48px;
   font-style: italic;
+}
+
+.fab-add {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .container-app {
+    padding: 20px;
+  }
+
+  .fab-add {
+    bottom: 20px;
+    right: 20px;
+  }
 }

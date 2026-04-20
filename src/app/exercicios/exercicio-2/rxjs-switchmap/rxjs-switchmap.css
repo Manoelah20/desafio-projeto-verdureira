@@ -1,31 +1,27 @@
-/* Estilo para o container de cada exercício */
 :host {
     display: block;
-    padding: 15px;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    background-color: #ffffff;
-    margin-top: 10px;
+    color: #333;
 }
 
 h1,
 h3 {
-    color: #2d3748;
-    margin-bottom: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
 }
 
 input {
     width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #cbd5e0;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    padding: 10px 14px;
+    border: 1px solid #bbdefb;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
 }
 
 .loading {
-    color: #3182ce;
-    font-weight: bold;
-    font-size: 0.9rem;
+    color: #666;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 ul {
@@ -34,8 +30,8 @@ ul {
 }
 
 li {
-    padding: 8px;
-    border-bottom: 1px solid #edf2f7;
+    padding: 10px 0;
+    color: #333;
 }
 
 li:last-child {

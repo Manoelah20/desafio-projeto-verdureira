@@ -1,34 +1,37 @@
 :host {
     display: block;
+    color: #333;
 }
 
 .lista-container {
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 12px;
+    color: #333;
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 1.5rem;
-    border: 1px solid #cbd5e0;
-    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #bbdefb;
+    border-radius: 8px;
     box-sizing: border-box;
+    font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
 }
 
 ul {
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 16px;
     list-style: none;
 }
 
 /* Estilo para o componente de card (app-item-card) */
 .card {
-    padding: 1rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #bbdefb;
+    border-radius: 12px;
     background: #fff;
     transition:
         transform 0.2s,
@@ -37,17 +40,17 @@ ul {
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(21, 101, 192, 0.15);
 }
 
 h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.1rem;
-    color: #2d3748;
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: #333;
 }
 
 p {
     margin: 0;
-    font-size: 0.9rem;
-    color: #4a5568;
+    font-size: 15px;
+    color: #333;
 }

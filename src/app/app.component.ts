@@ -158,24 +158,25 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
     }
 
     .toolbar-title {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 600;
     }
 
     .toolbar-author {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
       opacity: 0.9;
     }
 
     .container {
       max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 30px;
+      margin: 16px auto;
+      padding: 0 20px;
+      font-size: 18px;
     }
 
     .intro-card {
-      margin-bottom: 40px;
+      margin-bottom: 16px;
       border-radius: 16px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -183,7 +184,7 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
     .exercises-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
+      gap: 16px;
     }
 
     @media (max-width: 768px) {
@@ -228,7 +229,7 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
     }
 
     .exercise-card {
-      margin-bottom: 40px;
+      margin-bottom: 16px;
       border-radius: 16px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.3s ease;
@@ -236,6 +237,14 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
 
     .exercise-card:hover {
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    mat-card-header {
+      margin-bottom: 20px;
+    }
+
+    mat-card-content p {
+      margin-bottom: 20px;
     }
 
     .code-toggle {

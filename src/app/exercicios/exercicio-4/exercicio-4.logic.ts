@@ -42,6 +42,23 @@ export class UsuarioService {
       ),
     );
   }
+
+  criar(usuario: Omit<Usuario, 'id'>): Observable<Usuario> {
+    const novoUsuario: Usuario = {
+      ...usuario,
+      id: Math.max(...this.usuariosMock.map(u => u.id)) + 1,
+    };
+    this.usuariosMock.push(novoUsuario);
+    return of(novoUsuario).pipe(delay(300));
+  }
+
+  editar(usuario: Usuario): Observable<void> {
+    const index = this.usuariosMock.findIndex(u => u.id === usuario.id);
+    if (index !== -1) {
+      this.usuariosMock[index] = usuario;
+    }
+    return of(void 0).pipe(delay(300));
+  }
 }
 
 // Store com Signals para gerenciar o estado da tela
@@ -62,6 +79,36 @@ export class UsuarioStore {
       },
       error: () => {
         this.erro.set("Erro ao carregar usuários");
+        this.loading.set(false);
+      },
+    });
+  }
+
+  criar(usuario: Omit<Usuario, 'id'>) {
+    this.loading.set(true);
+    this.service.criar(usuario).subscribe({
+      next: (novoUsuario) => {
+        this.usuarios.update(lista => [...lista, novoUsuario]);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.erro.set("Erro ao criar usuário");
+        this.loading.set(false);
+      },
+    });
+  }
+
+  editar(usuario: Usuario) {
+    this.loading.set(true);
+    this.service.editar(usuario).subscribe({
+      next: () => {
+        this.usuarios.update(lista =>
+          lista.map(u => u.id === usuario.id ? usuario : u)
+        );
+        this.loading.set(false);
+      },
+      error: () => {
+        this.erro.set("Erro ao editar usuário");
         this.loading.set(false);
       },
     });
