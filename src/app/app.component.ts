@@ -43,7 +43,7 @@ import { Exercicio4Component } from './exercicios/exercicio-4/exercicio-4';
             <li>TypeScript (Generics, Interfaces, Tipagem)</li>
             <li>Testes Unitários (Vitest)</li>
           </ul>
-          <p class="note"><strong>💡 Dica:</strong> Clique em "Ver Código" para ver o código-fonte de cada exercício.</p>
+          <p class="note">Clique em "Ver Código" para ver o código-fonte de cada exercício.</p>
         </mat-card-content>
       </mat-card>
 
